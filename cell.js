@@ -15,33 +15,27 @@ class Cell {
   }
 
   drawCell() {
-    this.ctx.strokeRect(this.left, this.top, this.width, this.height)
+    // this.ctx.strokeRect(this.left, this.top, this.width, this.height)
   }
 
   clearEastWall() {
-    this.ctx.clearRect(
-      this.left + this.width - 2,
-      this.top + 1,
-      3,
-      this.height - 2
-    )
+    const { ctx, left, width, top, height } = this
+    // ctx.clearRect(left + width - 2, top + 1, 3, height - 2)
   }
 
   clearSouthWall() {
-    this.ctx.clearRect(
-      this.left + 1,
-      this.top + this.height - 2,
-      this.width - 2,
-      3
-    )
+    const { ctx, left, width, top, height } = this
+    // ctx.clearRect(left + 1, top + height - 2, width - 2, 3)
   }
 
   clearNorthWall() {
-    this.ctx.clearRect(this.left + 1, this.top - 1, this.width - 1, 3)
+    const { ctx, left, width, top, height } = this
+    // ctx.clearRect(left + 1, top - 1, width - 1, 3)
   }
 
   clearWestWall() {
-    this.ctx.clearRect(this.left - 2, this.top + 1, 3, this.height - 2)
+    const { ctx, left, width, top, height } = this
+    // ctx.clearRect(left - 2, top + 1, 3, height - 2)
   }
 
   clearWall(direction) {
@@ -101,13 +95,10 @@ class Cell {
   }
 
   color(color) {
-    this.ctx.fillStyle = color
-    this.ctx.fillRect(
-      this.left + 1,
-      this.top + 1,
-      this.width - 1,
-      this.height - 1
-    )
+    const { ctx, left, width, top, height } = this
+    ctx.fillStyle = color
+    // ctx.fillRect(left + 1, top + 1, width - 1, height - 1)
+    ctx.fillRect(left, top, width, height)
   }
 
   colorWithDelay(color, index) {
@@ -117,6 +108,7 @@ class Cell {
   }
 
   text(word) {
+    const { ctx, left, width, top, height } = this
     // this.ctx.clearRect(
     //   this.top + 1,
     //   this.left + 1,
@@ -124,12 +116,8 @@ class Cell {
     //   this.height - 1
     // )
 
-    this.ctx.font = `${(this.width / 2).toString()}px serif`
-    this.ctx.fillText(
-      word,
-      this.left + this.width / 2,
-      this.top + this.height / 2
-    )
+    ctx.font = `${(width / 2).toString()}px serif`
+    ctx.fillText(word, left + width / 2, top + height / 2)
   }
 
   textWithDelay(word, index) {
@@ -179,7 +167,7 @@ class Cell {
           linked.distance = distance.currentDistance(linked.uuid)
           counter += 1
           // linked.text(distance.currentDistance(linked.uuid))
-          linked.textWithDelay(distance.currentDistance(linked.uuid), counter)
+          // linked.textWithDelay(distance.currentDistance(linked.uuid), counter)
           newFrontier.push(linked)
         })
       })
@@ -190,22 +178,22 @@ class Cell {
   }
 
   drawLine(direction) {
-    const { ctx } = this
+    const { ctx, left, width, top, height } = this
     ctx.beginPath()
     ctx.strokeStyle = 'orange'
-    ctx.moveTo(this.left + this.width / 2, this.top + this.height / 2)
+    ctx.moveTo(left + width / 2, top + height / 2)
     switch (direction) {
       case 'north':
-        ctx.lineTo(this.left + this.width / 2, this.top - this.height / 2)
+        ctx.lineTo(left + width / 2, top - height / 2)
         break
       case 'east':
-        ctx.lineTo(this.left + this.width / 2, this.top + this.height / 2)
+        ctx.lineTo(left + width / 2, top + height / 2)
         break
       case 'south':
-        ctx.lineTo(this.left + this.width / 2, this.top + this.height / 2)
+        ctx.lineTo(left + width / 2, top + height / 2)
         break
       case 'west':
-        ctx.lineTo(this.left - this.width / 2, this.top + this.height / 2)
+        ctx.lineTo(left - width / 2, top + height / 2)
         break
     }
     ctx.stroke()

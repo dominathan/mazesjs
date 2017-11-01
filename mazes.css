@@ -1,3 +1,8 @@
 canvas {
   border: 1px solid black;
 }
+
+.col-3 {
+  width: 30%;
+  display: inline-block;
+}

@@ -100,7 +100,7 @@ class Grid {
         let dark = Math.round(255 * intensity)
         let bright = Math.round(128 + 127 * intensity)
         let color = `rgb(${bright},${dark},${bright})`
-        // counter += 1
+        counter += 1
         cell.color(color, counter)
       })
     })
