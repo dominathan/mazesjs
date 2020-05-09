@@ -1,0 +1,14 @@
+{
+  "name": "fhir-validators",
+  "version": "1.0.0",
+  "description": "FHIR Schema validation tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nathan Hall",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1"
+  }
+}
